@@ -1,9 +1,32 @@
 {
-   "name": "nuxt-protected-mailto",
-   "version": "1.0.0",
-   "description": "Mailto Component to protect mailto links from spam bots",
-   "private": false,
-   "main": "module.js",
-   "license": "MIT"
- }
- 
+  "name": "nuxt-protected-mailto",
+  "version": "0.0.0",
+  "description": "Mailto Component to protect mailto links from spam bots",
+  "repository": "mmoollllee/nuxt-protected-mailto",
+  "private": false,
+  "files": [
+    "./"
+  ],
+  "main": "module.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt example",
+    "lint": "eslint --ext .js,.vue example lib test",
+    "release": "standard-version && git push --follow-tags && npm publish"
+  },
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "@nuxtjs/eslint-config": "latest",
+    "babel-eslint": "latest",
+    "codecov": "latest",
+    "eslint": "latest",
+    "nuxt-edge": "latest",
+    "standard-version": "latest"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -2,8 +2,7 @@
 const { resolve, join } = require('path')
 const { readdirSync } = require('fs')
 
-export default function() {
-
+export default function () {
   // add all of the initial plugins
   const pluginsToSync = [
     'components/index.js'
@@ -11,11 +10,9 @@ export default function() {
   for (const pathString of pluginsToSync) {
     this.addPlugin({
       src: resolve(__dirname, pathString),
-      fileName: pathString,
-      options
+      fileName: pathString
     })
   }
-  
   // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
   const foldersToSync = ['components/lib']
   for (const pathString of foldersToSync) {
