@@ -2,22 +2,7 @@
 const { resolve, join } = require('path')
 const { readdirSync } = require('fs')
 
-const defaults = {
-  title: ''
-}
-
-export default function(moduleOptions) {
-
-  // get all options for the module
-  const options = {
-    ...defaults,
-    ...moduleOptions,
-    ...this.options.mailto
-  }
-
-  // expose the namespace / set a default
-  if (!options.namespace) options.namespace = 'mailto'
-  const { namespace } = options
+export default function() {
 
   // add all of the initial plugins
   const pluginsToSync = [
@@ -26,7 +11,7 @@ export default function(moduleOptions) {
   for (const pathString of pluginsToSync) {
     this.addPlugin({
       src: resolve(__dirname, pathString),
-      fileName: join(namespace, pathString),
+      fileName: pathString,
       options
     })
   }
@@ -38,8 +23,7 @@ export default function(moduleOptions) {
     for (const file of readdirSync(path)) {
       this.addTemplate({
         src: resolve(path, file),
-        fileName: join(namespace, pathString, file),
-        options
+        fileName: join(pathString, file)
       })
     }
   }
