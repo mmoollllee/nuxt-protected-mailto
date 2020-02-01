@@ -11,9 +11,6 @@ module.exports = {
   modules: [
     '@@'
   ],
-  generate: {
-    dir: '../dist'
-  },
   build: {
     html: {
       minify: {
