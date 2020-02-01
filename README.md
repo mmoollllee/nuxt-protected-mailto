@@ -6,7 +6,9 @@
 
 > This module tries to protect email-addresses in your Nuxt SSG / SSR project from spam bots without without sacrificing usability. The HTML output of the mail geht's encoded to HTML Unicode Entities. Mailto: Links will be handled by javascript instead of a `href="mailto:test@example.com"`.
 
-[📖 **Release Notes**](./CHANGELOG.md)
+[**Demo**](https://mmoollllee.github.io/nuxt-protected-mailto/)
+
+[📖 Release Notes](./CHANGELOG.md)
 
 ## Setup
 
