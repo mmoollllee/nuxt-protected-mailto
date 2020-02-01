@@ -1,7 +1,7 @@
 {
   "name": "nuxt-protected-mailto",
-  "version": "0.0.1",
-  "description": "Mailto Component to protect mailto links from spam bots",
+  "version": "0.0.2",
+  "description": "Nuxt component to generate encoded mailto links",
   "repository": "mmoollllee/nuxt-protected-mailto",
   "private": false,
   "files": [
