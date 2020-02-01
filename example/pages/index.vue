@@ -7,9 +7,3 @@
     <p>Don't forget to set build.html.minify.decodeEntities = false</p>
   </div>
 </template>
-
-<script>
-export default {
-
-}
-</script>

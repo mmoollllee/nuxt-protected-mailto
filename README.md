@@ -2,11 +2,9 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![Circle CI][circle-ci-src]][circle-ci-href]
-[![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> 
+> This module tries to protect email-addresses in your Nuxt SSG / SSR project from spam bots without without sacrificing usability. The HTML output of the mail geht's encoded to HTML Unicode Entities. Mailto: Links will be handled by javascript instead of a `href="mailto:test@example.com"`.
 
 [📖 **Release Notes**](./CHANGELOG.md)
 
@@ -23,10 +21,36 @@ yarn add nuxt-protected-mailto # or npm install nuxt-protected-mailto
 ```js
 {
   modules: [
-    // Simple usage
     'nuxt-protected-mailto',
   ]
 }
+```
+
+3. Set `build.html.minify.decodeEntities = false` in `nuxt.config.js`
+
+```js
+{
+  build: {
+    html: {
+      minify: {
+        decodeEntities: false
+      }
+    }
+  }
+}
+```
+
+4. Use the global `Mailto` Component
+With the Email as output.
+```html 
+<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
+```
+
+With Caption
+```html 
+<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
+  Button Caption
+</Mailto>
 ```
 
 ## Development
@@ -35,11 +59,9 @@ yarn add nuxt-protected-mailto # or npm install nuxt-protected-mailto
 2. Install dependencies using `yarn install` or `npm install`
 3. Start development server using `npm run dev`
 
-## License
+## Help wanted
 
-[MIT License](./LICENSE)
-
-Copyright (c) MGraf <info@moritz-graf.de>
+This is my very first NUXT Module. Please reach out to me if there is something I could do better.
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-protected-mailto/latest.svg?style=flat-square
