@@ -5,6 +5,9 @@ module.exports = {
   buildDir: resolve(__dirname, '.nuxt'),
   srcDir: __dirname,
   mode: 'universal',
+  router: {
+    base: '/nuxt-protected-mailto/'
+  },
   render: {
     resourceHints: false
   },
