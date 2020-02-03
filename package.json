@@ -5,7 +5,7 @@
   "repository": "mmoollllee/nuxt-protected-mailto",
   "private": false,
   "files": [
-    "./"
+    "components"
   ],
   "main": "module.js",
   "license": "MIT",
