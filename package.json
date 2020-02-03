@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nuxt example",
-    "demo": "nuxt generate example && git subtree push --prefix dist origin gh-pages",
+    "demo": "nuxt generate example",
     "lint": "eslint --ext .js,.vue example lib test",
     "release": "standard-version && git push --follow-tags && npm publish"
   },
