@@ -8,11 +8,30 @@
 </template>
 
 <script>
+import isEmail from 'is-email'
+
+function formatMail(mail, asArray = false, pretty = true) {
+  if (typeof mail === 'string') mail = mail.split(',')
+  mail = mail.map(email => {
+    return email.trim()
+  })
+  if(asArray) return mail
+  else return pretty ? mail.join(', ') : mail.join(',')
+}
+
 export default {
   props: {
     mail: {
-      type: String,
-      required: true
+      type: [String, Array],
+      required: true,
+      validator: (value) => {
+        let isValid = true
+        value = formatMail(value, true, false)
+        value.forEach(email => {
+          if (!isEmail(email)) isValid = false
+        })
+        return isValid
+      }
     },
     subject: {
       type: String,
@@ -25,9 +44,11 @@ export default {
   },
   computed: {
     encoded() {
+      let mail = formatMail(this.mail)
+
       const buf = []
-      for (let i = this.mail.length - 1; i >= 0; i--) {
-        buf.unshift(['&#', this.mail.charCodeAt(i), ';'].join(''))
+      for (let i = mail.length - 1; i >= 0; i--) {
+        buf.unshift(['&#', mail.charCodeAt(i), ';'].join(''))
       }
       return buf.join('')
     }
@@ -52,7 +73,7 @@ export default {
         }
       }
 
-      let href = ['mailto:', this.mail, ...queryParameters(this.subject, this.body)]
+      let href = ['mailto:', formatMail(this.mail), ...queryParameters(this.subject, this.body)]
       window.location.href = href.join('')
     }
   }

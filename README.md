@@ -45,14 +45,23 @@ yarn add nuxt-protected-mailto # or npm install nuxt-protected-mailto
 4. Use the global `Mailto` Component
 With the Email as output.
 ```html 
-<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
+<Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
 
 With Caption
 ```html 
-<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
+<Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
   Button Caption
 </Mailto>
+```
+
+For multiple recipients
+```html
+<Mailto mail="test@example.com, test2@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
+
+<!-- OR -->
+
+<Mailto :mail="['test@example.com', 'test2@example.com']" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
 
 ## What it does

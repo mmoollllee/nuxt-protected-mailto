@@ -24,6 +24,7 @@
     "babel-eslint": "latest",
     "codecov": "latest",
     "eslint": "latest",
+    "is-email": "latest",
     "nuxt-edge": "latest",
     "standard-version": "latest"
   },
