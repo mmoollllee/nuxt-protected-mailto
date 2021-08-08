@@ -70,11 +70,11 @@ It encodes the email address by hiding it behind a click event when the `Mailto`
 
 ## Props & slots
 
-| Prop      | Value  | Required |
-|-----------|--------|----------|
-| `mail`    | String | Yes      |
-| `subject` | String | No       |
-| `body`    | String | No       |
+| Prop      | Value              | Required |
+|-----------|--------------------|----------|
+| `mail`    | String \| String[] | Yes      |
+| `subject` | String             | No       |
+| `body`    | String             | No       |
 
 | Slot      | Description                      |
 |-----------|----------------------------------|
