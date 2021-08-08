@@ -10,7 +10,7 @@
   "main": "module.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nuxt example",
+    "dev": "nuxt example --open",
     "demo": "nuxt generate example",
     "lint": "eslint --ext .js,.vue example lib test",
     "release": "standard-version && git push --follow-tags && npm publish"
