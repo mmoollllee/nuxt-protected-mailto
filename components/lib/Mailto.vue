@@ -66,14 +66,14 @@ export default {
         if (body) params.push(body)
 
         if (params.length > 0) {
-          return [`?${params.join('&')}`]
+          return `?${params.join('&')}`
         }
         else {
-          return []
+          return ''
         }
       }
 
-      let href = ['mailto:', formatMail(this.mail), ...queryParameters(this.subject, this.body)]
+      let href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body)]
       window.location.href = href.join('')
     }
   }
