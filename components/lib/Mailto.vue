@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     mail: {
@@ -17,11 +16,11 @@ export default {
     },
     subject: {
       type: String,
-      default: ''
+      default: undefined
     },
     body: {
       type: String,
-      default: ''
+      default: undefined
     },
   },
   computed: {
@@ -36,13 +35,25 @@ export default {
   methods: {
     mailtoHandler(e) {
       e.preventDefault()
-      window.location.href =
-        'mailto:' +
-        this.mail +
-        '?subject=' +
-        encodeURIComponent(this.subject) +
-        '&body=' +
-        encodeURIComponent(this.body)
+
+      function queryParameters(subject, body) {
+        const params = []
+        subject = subject !== undefined ? `subject=${encodeURIComponent(subject)}` : null
+        body = body !== undefined ? `body=${encodeURIComponent(body)}` : null
+
+        if (subject) params.push(subject)
+        if (body) params.push(body)
+
+        if (params.length > 0) {
+          return [`?${params.join('&')}`]
+        }
+        else {
+          return []
+        }
+      }
+
+      let href = ['mailto:', this.mail, ...queryParameters(this.subject, this.body)]
+      window.location.href = href.join('')
     }
   }
 }
