@@ -57,32 +57,21 @@ With Caption
 
 ## What it does
 
-All it does, is encoding the mail address and binding a click event to hide every kind of "mailto:" in the HTML. Also it supports adding a placeholder for subject and body that will be prefilled in the user's mail application.
+It encodes the email address by hiding it behind a click event when the `Mailto` component is used. When the link is clicked, a `mailto:` url is generated, sending the user to their preferred email application with some prefilled data.
 
-```js
-  // components/lib/Mailto.vue
-  computed: {
-    encoded() {
-      const buf = []
-      for (let i = this.mail.length - 1; i >= 0; i--) {
-        buf.unshift(['&#', this.mail.charCodeAt(i), ';'].join(''))
-      }
-      return buf.join('')
-    }
-  },
-  methods: {
-    mailtoHandler(e) {
-      e.preventDefault()
-      window.location.href =
-        'mailto:' +
-        this.mail +
-        '?subject=' +
-        encodeURIComponent(this.subject) +
-        '&body=' +
-        encodeURIComponent(this.body)
-    }
-  }
-```
+## Props & slots
+
+| Prop      | Value  | Required |
+|-----------|--------|----------|
+| `mail`    | String | Yes      |
+| `subject` | String | No       |
+| `body`    | String | No       |
+
+| Slot      | Description                      |
+|-----------|----------------------------------|
+| Default   | Valid HTML to go inside the link |
+
+---
 
 ## Development
 
