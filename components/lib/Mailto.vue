@@ -13,6 +13,7 @@ import isEmail from 'is-email'
 function formatMail(mail, asArray = false, pretty = true) {
   if (typeof mail === 'string') {
     if (mail.endsWith(',')) mail = mail.substring(0, mail.length - 1)
+    if (mail.startsWith(',')) mail = mail.substring(1)
     mail = mail.split(',')
   }
   mail = mail.map(email => {
