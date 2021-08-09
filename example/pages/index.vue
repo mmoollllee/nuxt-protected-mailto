@@ -14,6 +14,8 @@
     <Mailto mail="test@example.com, test2@example.com" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
     <p>With multiple recipients (array)</p>
     <Mailto :mail="['test@example.com', 'test2@example.com']" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
+    <p>With CC & BCC</p>
+    <Mailto mail="test@example.com" cc="test2@example.com" :bcc="['test3@example.com', 'test4@example.com']" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
 
     <p>Don"t forget to set <code>build.html.minify.decodeEntities = false</code></p>
   </div>

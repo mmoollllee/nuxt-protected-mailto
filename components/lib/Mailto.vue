@@ -36,6 +36,30 @@ export default {
         return isValid
       }
     },
+    cc: {
+      type: [String, Array],
+      default: undefined,
+      validator: (value) => {
+        let isValid = true
+        value = formatMail(value, true, false)
+        value.forEach(email => {
+          if (!isEmail(email)) isValid = false
+        })
+        return isValid
+      }
+    },
+    bcc: {
+      type: [String, Array],
+      default: undefined,
+      validator: (value) => {
+        let isValid = true
+        value = formatMail(value, true, false)
+        value.forEach(email => {
+          if (!isEmail(email)) isValid = false
+        })
+        return isValid
+      }
+    },
     subject: {
       type: String,
       default: undefined
@@ -43,7 +67,7 @@ export default {
     body: {
       type: String,
       default: undefined
-    },
+    }
   },
   computed: {
     encoded() {
@@ -60,11 +84,15 @@ export default {
     mailtoHandler(e) {
       e.preventDefault()
 
-      function queryParameters(subject, body) {
+      function queryParameters(subject, body, cc, bcc) {
         const params = []
+        cc = cc !== undefined ? `CC=${formatMail(cc)}` : null
+        bcc = bcc !== undefined ? `BCC=${formatMail(bcc)}` : null
         subject = subject !== undefined ? `subject=${encodeURIComponent(subject)}` : null
         body = body !== undefined ? `body=${encodeURIComponent(body)}` : null
 
+        if (cc) params.push(cc)
+        if (bcc) params.push(bcc)
         if (subject) params.push(subject)
         if (body) params.push(body)
 
@@ -76,7 +104,7 @@ export default {
         }
       }
 
-      let href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body)]
+      let href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body, this.cc, this.bcc)]
       window.location.href = href.join('')
     }
   }

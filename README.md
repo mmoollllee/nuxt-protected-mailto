@@ -75,6 +75,8 @@ It encodes the email address by hiding it behind a click event when the `Mailto`
 | `mail`    | String \| String[] | Yes      |
 | `subject` | String             | No       |
 | `body`    | String             | No       |
+| `cc`      | String \| String[] | No       |
+| `bcc`     | String \| String[] | No       |
 
 | Slot      | Description                      |
 |-----------|----------------------------------|
