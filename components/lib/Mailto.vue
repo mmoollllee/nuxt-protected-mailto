@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     encoded() {
-      let mail = formatMail(this.mail)
+      const mail = formatMail(this.mail)
 
       const buf = []
       for (let i = mail.length - 1; i >= 0; i--) {
