@@ -11,7 +11,7 @@
     <p>With just body</p>
     <Mailto mail="test@example.com" body="Placeholder Body" title="Write me a email">Button</Mailto>
     <p>With multiple recipients (string)</p>
-    <Mailto mail="test@example.com ,test2@example.com" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
+    <Mailto mail="test@example.com, test2@example.com" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
     <p>With multiple recipients (array)</p>
     <Mailto :mail="['test@example.com', 'test2@example.com']" subject="Example Subject" body="Placeholder Body" title="Write me a email" />
 
