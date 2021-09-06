@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "nuxt example --open",
     "demo": "nuxt generate example",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint --ext .js,.vue example lib test",
     "release": "standard-version && git push --follow-tags && npm publish"
   },
