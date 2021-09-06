@@ -12,15 +12,24 @@ import isEmail from 'is-email'
 
 function formatMail(mail, asArray = false, pretty = true) {
   if (typeof mail === 'string') {
-    if (mail.endsWith(',')) mail = mail.substring(0, mail.length - 1)
-    if (mail.startsWith(',')) mail = mail.substring(1)
+    if (mail.endsWith(',')) { mail = mail.substring(0, mail.length - 1) }
+    if (mail.startsWith(',')) { mail = mail.substring(1) }
     mail = mail.split(',')
   }
-  mail = mail.map(email => {
+  mail = mail.map((email) => {
     return email.trim()
   })
-  if(asArray) return mail
-  else return pretty ? mail.join(', ') : mail.join(',')
+  if (asArray) { return mail }
+  return pretty ? mail.join(', ') : mail.join(',')
+}
+
+function validateMail (value) {
+  let isValid = true
+  value = formatMail(value, true, false)
+  value.forEach((email) => {
+    if (!isEmail(email)) { isValid = false }
+  })
+  return isValid
 }
 
 export default {
@@ -28,38 +37,17 @@ export default {
     mail: {
       type: [String, Array],
       required: true,
-      validator: (value) => {
-        let isValid = true
-        value = formatMail(value, true, false)
-        value.forEach(email => {
-          if (!isEmail(email)) isValid = false
-        })
-        return isValid
-      }
+      validator: value => validateMail(value)
     },
     cc: {
       type: [String, Array],
       default: undefined,
-      validator: (value) => {
-        let isValid = true
-        value = formatMail(value, true, false)
-        value.forEach(email => {
-          if (!isEmail(email)) isValid = false
-        })
-        return isValid
-      }
+      validator: value => validateMail(value)
     },
     bcc: {
       type: [String, Array],
       default: undefined,
-      validator: (value) => {
-        let isValid = true
-        value = formatMail(value, true, false)
-        value.forEach(email => {
-          if (!isEmail(email)) isValid = false
-        })
-        return isValid
-      }
+      validator: value => validateMail(value)
     },
     subject: {
       type: String,
@@ -71,7 +59,7 @@ export default {
     }
   },
   computed: {
-    encoded() {
+    encoded () {
       const mail = formatMail(this.mail)
 
       const buf = []
@@ -82,10 +70,10 @@ export default {
     }
   },
   methods: {
-    mailtoHandler(e) {
+    mailtoHandler (e) {
       e.preventDefault()
 
-      function queryParameters(subject, body, cc, bcc) {
+      function queryParameters (subject, body, cc, bcc) {
         const params = []
         cc = cc !== undefined ? `CC=${formatMail(cc)}` : null
         bcc = bcc !== undefined ? `BCC=${formatMail(bcc)}` : null
