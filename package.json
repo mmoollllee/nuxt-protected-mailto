@@ -27,6 +27,7 @@
     "eslint": "latest",
     "is-email": "latest",
     "nuxt-edge": "latest",
+    "push-dir": "^0.4.1",
     "standard-version": "latest"
   },
   "publishConfig": {
