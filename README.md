@@ -4,7 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-> This module tries to protect email-addresses in your Nuxt SSG / SSR project from spam bots without without sacrificing usability. The HTML output of the mail geht's encoded to HTML Unicode Entities. Mailto: Links will be handled by javascript instead of a `href="mailto:test@example.com"`.
+> This module tries to protect email-addresses in your Nuxt SSG / SSR project from spam bots without sacrificing usability. The HTML output of the mail gets encoded to HTML Unicode Entities. Mailto: Links will be handled by javascript instead of a `href="mailto:test@example.com"`.
 
 [**Demo**](https://mmoollllee.github.io/nuxt-protected-mailto/)
 
@@ -45,14 +45,23 @@ yarn add nuxt-protected-mailto # or npm install nuxt-protected-mailto
 4. Use the global `Mailto` Component
 With the Email as output.
 ```html 
-<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
+<Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
 
 With Caption
 ```html 
-<Mailto mail='test@example.com' subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
+<Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
   Button Caption
 </Mailto>
+```
+
+For multiple recipients
+```html
+<Mailto mail="test@example.com, test2@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
+
+<!-- OR -->
+
+<Mailto :mail="['test@example.com', 'test2@example.com']" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
 
 ## What it does
@@ -61,11 +70,13 @@ It encodes the email address by hiding it behind a click event when the `Mailto`
 
 ## Props & slots
 
-| Prop      | Value  | Required |
-|-----------|--------|----------|
-| `mail`    | String | Yes      |
-| `subject` | String | No       |
-| `body`    | String | No       |
+| Prop      | Value              | Required |
+|-----------|--------------------|----------|
+| `mail`    | String \| String[] | Yes      |
+| `subject` | String             | No       |
+| `body`    | String             | No       |
+| `cc`      | String \| String[] | No       |
+| `bcc`     | String \| String[] | No       |
 
 | Slot      | Description                      |
 |-----------|----------------------------------|
