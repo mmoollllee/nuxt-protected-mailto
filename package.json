@@ -16,6 +16,9 @@
     "lint": "eslint --ext .js,.vue example lib test",
     "release": "standard-version && git push --follow-tags && npm publish"
   },
+  "dependencies": {
+    "is-email": "latest"
+  },
   "devDependencies": {
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
@@ -25,7 +28,6 @@
     "babel-eslint": "latest",
     "codecov": "latest",
     "eslint": "latest",
-    "is-email": "latest",
     "nuxt-edge": "latest",
     "push-dir": "^0.4.1",
     "standard-version": "latest"
