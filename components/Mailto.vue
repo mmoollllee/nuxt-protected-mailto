@@ -1,16 +1,17 @@
 <template lang="html">
   <a
-    @click="mailtoHandler"
     href="#"
+    @click="mailtoHandler"
   >
-    <slot><span v-html="encoded"></span></slot>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <slot><span v-html="encoded" /></slot>
   </a>
 </template>
 
 <script>
 import isEmail from 'is-email'
 
-function formatMail(mail, asArray = false, pretty = true) {
+function formatMail (mail, asArray = false, pretty = true) {
   if (typeof mail === 'string') {
     if (mail.endsWith(',')) { mail = mail.substring(0, mail.length - 1) }
     if (mail.startsWith(',')) { mail = mail.substring(1) }
@@ -80,20 +81,19 @@ export default {
         subject = subject !== undefined ? `subject=${encodeURIComponent(subject)}` : null
         body = body !== undefined ? `body=${encodeURIComponent(body)}` : null
 
-        if (cc) params.push(cc)
-        if (bcc) params.push(bcc)
-        if (subject) params.push(subject)
-        if (body) params.push(body)
+        if (cc) { params.push(cc) }
+        if (bcc) { params.push(bcc) }
+        if (subject) { params.push(subject) }
+        if (body) { params.push(body) }
 
         if (params.length > 0) {
           return `?${params.join('&')}`
-        }
-        else {
+        } else {
           return ''
         }
       }
 
-      let href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body, this.cc, this.bcc)]
+      const href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body, this.cc, this.bcc)]
       window.location.href = href.join('')
     }
   }
