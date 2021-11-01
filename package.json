@@ -13,7 +13,7 @@
     "dev": "nuxt example --open",
     "demo": "nuxt generate example",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "lint": "eslint --ext .js,.vue example lib test",
+    "lint": "eslint --ext .js,.vue example components",
     "release": "standard-version && git push --follow-tags && npm publish"
   },
   "dependencies": {
@@ -21,15 +21,15 @@
   },
   "devDependencies": {
     "@babel/core": "latest",
+    "@babel/eslint-parser": "latest",
     "@babel/preset-env": "latest",
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "@nuxtjs/eslint-config": "latest",
-    "babel-eslint": "latest",
     "codecov": "latest",
     "eslint": "latest",
-    "nuxt-edge": "latest",
-    "push-dir": "^0.4.1",
+    "nuxt": "latest",
+    "push-dir": "latest",
     "standard-version": "latest"
   },
   "publishConfig": {
