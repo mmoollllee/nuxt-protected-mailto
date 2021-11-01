@@ -33,6 +33,25 @@ function validateMail (value) {
   return isValid
 }
 
+function queryParameters (subject, body, cc, bcc) {
+  const params = []
+  cc = cc !== undefined ? `CC=${formatMail(cc)}` : null
+  bcc = bcc !== undefined ? `BCC=${formatMail(bcc)}` : null
+  subject = subject !== undefined ? `subject=${encodeURIComponent(subject)}` : null
+  body = body !== undefined ? `body=${encodeURIComponent(body)}` : null
+
+  if (cc) { params.push(cc) }
+  if (bcc) { params.push(bcc) }
+  if (subject) { params.push(subject) }
+  if (body) { params.push(body) }
+
+  if (params.length > 0) {
+    return `?${params.join('&')}`
+  } else {
+    return ''
+  }
+}
+
 export default {
   props: {
     mail: {
@@ -57,6 +76,10 @@ export default {
     body: {
       type: String,
       default: undefined
+    },
+    target: {
+      type: [String],
+      default: undefined
     }
   },
   computed: {
@@ -74,27 +97,13 @@ export default {
     mailtoHandler (e) {
       e.preventDefault()
 
-      function queryParameters (subject, body, cc, bcc) {
-        const params = []
-        cc = cc !== undefined ? `CC=${formatMail(cc)}` : null
-        bcc = bcc !== undefined ? `BCC=${formatMail(bcc)}` : null
-        subject = subject !== undefined ? `subject=${encodeURIComponent(subject)}` : null
-        body = body !== undefined ? `body=${encodeURIComponent(body)}` : null
-
-        if (cc) { params.push(cc) }
-        if (bcc) { params.push(bcc) }
-        if (subject) { params.push(subject) }
-        if (body) { params.push(body) }
-
-        if (params.length > 0) {
-          return `?${params.join('&')}`
-        } else {
-          return ''
-        }
-      }
-
       const href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body, this.cc, this.bcc)]
-      window.location.href = href.join('')
+
+      if (this.target === '_blank') {
+        window.open(href.join(''), '_blank')
+      } else {
+        window.location.href = href.join('')
+      }
     }
   }
 }

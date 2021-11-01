@@ -9,3 +9,5 @@ export default function () {
     })
   })
 }
+
+module.exports.meta = require('./package.json')
