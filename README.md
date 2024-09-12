@@ -18,6 +18,8 @@ Install the module to your Nuxt application with one command:
 
 ```bash
 npx nuxi module add nuxt-protected-mailto
+# or with npm and manually adding the module to your nuxt.config.ts
+npm install nuxt-protected-mailto
 ```
 
 Use the global `Mailto` [Component](./src/runtime/components/Mailto.vue):

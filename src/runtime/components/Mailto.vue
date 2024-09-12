@@ -9,7 +9,18 @@
 </template>
 
 <script>
-import isEmail from 'is-email'
+/**
+ * validate an email address.
+ *
+ * @param {string} string
+ * @return {boolean}
+ */
+function isEmail(string) {
+  // Email address matcher.
+  const matcher = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+  if (string.length > 320) return false
+  return matcher.test(string)
+}
 
 function formatMail(mail, asArray = false, pretty = true) {
   if (typeof mail === 'string') {

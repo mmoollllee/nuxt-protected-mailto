@@ -27,8 +27,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@nuxt/kit": "^3.13.1",
-    "is-email": "latest"
+    "@nuxt/kit": "^3.13.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.4.2",
