@@ -22,14 +22,13 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "demo": "nuxi generate playground",
-    "deploy": "push-dir --dir=playground/.output/public --branch=gh-pages --cleanup",
+    "deploy": "nuxi generate playground && gh-pages -d playground/.output/public",
     "release": "changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
-    "is-email": "latest",
-    "@nuxt/kit": "^3.13.1"
+    "@nuxt/kit": "^3.13.1",
+    "is-email": "latest"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.4.2",
@@ -39,9 +38,9 @@
     "@types/node": "latest",
     "changelogen": "^0.5.5",
     "eslint": "^9.10.0",
+    "gh-pages": "^6.1.1",
     "nuxt": "^3.13.0",
     "typescript": "latest",
-    "vue-tsc": "^2.1.6",
-    "push-dir": "latest"
+    "vue-tsc": "^2.1.6"
   }
 }
