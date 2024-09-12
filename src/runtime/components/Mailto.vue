@@ -11,10 +11,14 @@
 <script>
 import isEmail from 'is-email'
 
-function formatMail (mail, asArray = false, pretty = true) {
+function formatMail(mail, asArray = false, pretty = true) {
   if (typeof mail === 'string') {
-    if (mail.endsWith(',')) { mail = mail.substring(0, mail.length - 1) }
-    if (mail.startsWith(',')) { mail = mail.substring(1) }
+    if (mail.endsWith(',')) {
+      mail = mail.substring(0, mail.length - 1)
+    }
+    if (mail.startsWith(',')) {
+      mail = mail.substring(1)
+    }
     mail = mail.split(',')
   }
   mail = mail.map((email) => {
@@ -24,7 +28,7 @@ function formatMail (mail, asArray = false, pretty = true) {
   return pretty ? mail.join(', ') : mail.join(',')
 }
 
-function validateMail (value) {
+function validateMail(value) {
   let isValid = true
   value = formatMail(value, true, false)
   value.forEach((email) => {
@@ -33,7 +37,7 @@ function validateMail (value) {
   return isValid
 }
 
-function queryParameters (subject, body, cc, bcc) {
+function queryParameters(subject, body, cc, bcc) {
   const params = []
   cc = cc !== undefined ? `CC=${formatMail(cc)}` : null
   bcc = bcc !== undefined ? `BCC=${formatMail(bcc)}` : null
@@ -47,7 +51,8 @@ function queryParameters (subject, body, cc, bcc) {
 
   if (params.length > 0) {
     return `?${params.join('&')}`
-  } else {
+  }
+  else {
     return ''
   }
 }
@@ -57,33 +62,33 @@ export default {
     mail: {
       type: [String, Array],
       required: true,
-      validator: value => validateMail(value)
+      validator: value => validateMail(value),
     },
     cc: {
       type: [String, Array],
       default: undefined,
-      validator: value => validateMail(value)
+      validator: value => validateMail(value),
     },
     bcc: {
       type: [String, Array],
       default: undefined,
-      validator: value => validateMail(value)
+      validator: value => validateMail(value),
     },
     subject: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     body: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     target: {
       type: [String],
-      default: undefined
-    }
+      default: undefined,
+    },
   },
   computed: {
-    encoded () {
+    encoded() {
       const mail = formatMail(this.mail)
 
       const buf = []
@@ -91,20 +96,21 @@ export default {
         buf.unshift(['&#', mail.charCodeAt(i), ';'].join(''))
       }
       return buf.join('')
-    }
+    },
   },
   methods: {
-    mailtoHandler (e) {
+    mailtoHandler(e) {
       e.preventDefault()
 
       const href = ['mailto:', formatMail(this.mail), queryParameters(this.subject, this.body, this.cc, this.bcc)]
 
       if (this.target === '_blank') {
         window.open(href.join(''), '_blank')
-      } else {
+      }
+      else {
         window.location.href = href.join('')
       }
-    }
-  }
+    },
+  },
 }
 </script>
