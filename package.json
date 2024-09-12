@@ -22,7 +22,9 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "demo": "nuxi generate playground",
+    "deploy": "push-dir --dir=playground/.output/public --branch=gh-pages --cleanup",
+    "release": "changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -39,6 +41,7 @@
     "eslint": "^9.10.0",
     "nuxt": "^3.13.0",
     "typescript": "latest",
-    "vue-tsc": "^2.1.6"
+    "vue-tsc": "^2.1.6",
+    "push-dir": "latest"
   }
 }
