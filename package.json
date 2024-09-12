@@ -23,7 +23,7 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "deploy": "nuxi generate playground && gh-pages -d playground/.output/public",
-    "release": "changelogen --major --release && npm publish && git push --follow-tags",
+    "release": "changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
