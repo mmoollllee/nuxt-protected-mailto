@@ -1,61 +1,40 @@
-# nuxt-protected-mailto
+# Nuxt Protected Mailto
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
+[![Nuxt][nuxt-src]][nuxt-href]
 
 > This module tries to protect email-addresses in your Nuxt SSG / SSR project from spam bots without sacrificing usability. The HTML output of the mail gets encoded to HTML Unicode Entities. Mailto: Links will be handled by javascript instead of a `href="mailto:test@example.com"`.
 
 [**Demo**](https://mmoollllee.github.io/nuxt-protected-mailto/)
 
-[📖 Release Notes](./CHANGELOG.md)
+- [✨ &nbsp;Release Notes](/CHANGELOG.md)
+<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-protected-mailto?file=playground%2Fapp.vue) -->
 
-## Setup
+## Quick Setup
 
-1. Add `nuxt-protected-mailto` dependency to your project
+Install the module to your Nuxt application with one command:
 
 ```bash
-yarn add nuxt-protected-mailto # or npm install nuxt-protected-mailto
+npx nuxi module add nuxt-protected-mailto
 ```
 
-2. Add `nuxt-protected-mailto` to the `modules` section of `nuxt.config.js`
+Use the global `Mailto` [Component](./src/runtime/components/Mailto.vue):
 
-```js
-{
-  modules: [
-    'nuxt-protected-mailto',
-  ]
-}
-```
-
-3. Set `build.html.minify.decodeEntities = false` in `nuxt.config.js`
-
-```js
-{
-  build: {
-    html: {
-      minify: {
-        decodeEntities: false
-      }
-    }
-  }
-}
-```
-
-4. Use the global `Mailto` Component
-With the Email as output.
+__With the Email as output.__
 ```html 
 <Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
 
-With Caption
+__With Caption__
 ```html 
 <Mailto mail="test@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email">
   Button Caption
 </Mailto>
 ```
 
-For multiple recipients
+__For multiple recipients__
 ```html
 <Mailto mail="test@example.com, test2@example.com" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 
@@ -63,6 +42,8 @@ For multiple recipients
 
 <Mailto :mail="['test@example.com', 'test2@example.com']" subject="Optional Example Subject" body="Optional Placeholder Body" title="Write me a email" />
 ```
+
+That's it! ✨
 
 ## What it does
 
@@ -77,35 +58,60 @@ It encodes the email address by hiding it behind a click event when the `Mailto`
 | `body`    | String             | No       |
 | `cc`      | String \| String[] | No       |
 | `bcc`     | String \| String[] | No       |
+| `target`  | String \| String[] | No       |
 
-| Slot      | Description                      |
-|-----------|----------------------------------|
-| Default   | Valid HTML to go inside the link |
+| Slot      | Description                              |
+|-----------|------------------------------------------|
+| Default   | Valid HTML to display inside the element |
 
 ---
 
-## Development
+## Contribution
 
-1. Clone this repository
-2. Install dependencies using `yarn install` or `npm install`
-3. Start development server using `npm run dev`
+<details>
+  <summary>Local development</summary>
+  
+  ```bash
+  # Install dependencies
+  npm install
+  
+  # Generate type stubs
+  npm run dev:prepare
+  
+  # Develop with the playground
+  npm run dev
+  
+  # Build the playground
+  npm run dev:build
+  
+  # Run ESLint
+  npm run lint
+  
+  # Run Vitest
+  npm run test
+  npm run test:watch
+  
+  # Release new version
+  npm run release
+  ```
 
-## Help wanted
+</details>
 
-This is my very first NUXT Module. Please reach out to me if there is something I could do better.
+### Help wanted
+
+This is the Nuxt3 update of [my very first NUXT Module](https://github.com/mmoollllee/nuxt-protected-mailto). Please reach out to me if there is something I could do better.
+
+
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-protected-mailto/latest.svg?style=flat-square
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-protected-mailto/latest.svg?style=flat&colorA=020420&colorB=00DC82
 [npm-version-href]: https://npmjs.com/package/nuxt-protected-mailto
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/nuxt-protected-mailto.svg?style=flat-square
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-protected-mailto.svg?style=flat&colorA=020420&colorB=00DC82
 [npm-downloads-href]: https://npmjs.com/package/nuxt-protected-mailto
 
-[circle-ci-src]: https://img.shields.io/circleci/project/github/.svg?style=flat-square
-[circle-ci-href]: https://circleci.com/gh/
-
-[codecov-src]: https://img.shields.io/codecov/c/github/.svg?style=flat-square
-[codecov-href]: https://codecov.io/gh/
-
-[license-src]: https://img.shields.io/npm/l/nuxt-protected-mailto.svg?style=flat-square
+[license-src]: https://img.shields.io/npm/l/nuxt-protected-mailto.svg?style=flat&colorA=020420&colorB=00DC82
 [license-href]: https://npmjs.com/package/nuxt-protected-mailto
+
+[nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
+[nuxt-href]: https://nuxt.com

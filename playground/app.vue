@@ -36,6 +36,5 @@
       title="Write me a email"
     />
 
-    <p>Don"t forget to set <code>build.html.minify.decodeEntities = false</code></p>
   </div>
 </template>
