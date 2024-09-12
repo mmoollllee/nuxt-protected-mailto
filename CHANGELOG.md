@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v0.1.0
+
+[compare changes](https://github.com/mmoollllee/nuxt-protected-mailto/compare/v0.0.12...v0.1.0)
+
 ### [0.0.12](https://github.com/mmoollllee/nuxt-protected-mailto/compare/v0.0.11...v0.0.12) (2021-11-01)
 
 ### [0.0.11](https://github.com/mmoollllee/nuxt-protected-mailto/compare/v0.0.10...v0.0.11) (2021-11-01)
