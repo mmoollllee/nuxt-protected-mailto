@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v0.1.1
+
+[compare changes](https://github.com/mmoollllee/nuxt-protected-mailto/compare/v0.1.0...v0.1.1)
+
+### 🏡 Chore
+
+- **release:** V0.1.0 ([6aa5745](https://github.com/mmoollllee/nuxt-protected-mailto/commit/6aa5745))
+
+### ❤️ Contributors
+
+- MGraf <info@moritz-graf.de>
+
 ## v0.1.0
 
 [compare changes](https://github.com/mmoollllee/nuxt-protected-mailto/compare/v0.0.12...v0.1.0)
